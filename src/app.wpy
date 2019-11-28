@@ -1,0 +1,80 @@
+<style lang="less"></style>
+
+<script>
+import wepy from 'wepy';
+import 'wepy-async-function';
+import  './base.js'
+export default class extends wepy.app {
+    config = {
+        pages: [
+            'pages/tabs/home',//主页
+            'pages/tabs/cates',//分类
+            'pages/tabs/search',//搜索
+            'pages/tabs/cart',//购物车
+            'pages/tabs/me',//我的
+            'pages/goods_detail/main',//商品详情页
+            'pages/goods_list' //商品列表页
+            
+        ],
+        window: {
+            backgroundTextStyle: 'dark',
+            //导航栏背景色
+            navigationBarBackgroundColor: '#d81e06',
+            //    标题文本
+            navigationBarTitleText: '蒋衡的购物',
+            // 标题文本颜色
+            navigationBarTextStyle: 'white'
+        },
+        tabBar: {
+            //tabbar导航栏
+            list: [
+                {
+                    pagePath: 'pages/tabs/home',
+                    text: '首页',
+                    iconPath: '/assets/home.png',
+                    selectedIconPath: '/assets/home-active.png'
+                },
+                {
+                    pagePath: 'pages/tabs/cates',
+                    text: '分类',
+                    iconPath: '/assets/cates.png',
+                    selectedIconPath: '/assets/cates-active.png'
+                },
+                {
+                    pagePath: 'pages/tabs/search',
+                    text: '搜索',
+                    iconPath: '/assets/search.png',
+                    selectedIconPath: '/assets/search-active.png'
+                },
+                {
+                    pagePath: 'pages/tabs/cart',
+                    text: '购物车',
+                    iconPath: '/assets/cart.png',
+                    selectedIconPath: '/assets/cart-active.png'
+                },
+                {
+                    pagePath: 'pages/tabs/me',
+                    text: '我的',
+                    iconPath: '/assets/my.png',
+                    selectedIconPath: '/assets/my-active.png'
+                }
+            ],
+            selectedColor: '#d81e06'
+        }
+    };
+
+    globalData = {
+        userInfo: null
+    };
+
+    constructor() {
+        super();
+        this.use('requestfix')
+        this.use('promisify')
+    }
+
+    onLaunch() {
+        console.log('小程序启动了');
+    }
+}
+</script>
